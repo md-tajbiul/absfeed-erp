@@ -7,7 +7,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // MongoDB Connection URI
-const uri = "mongodb+srv://absfeedinfo_db_user:JLrQFVl3aX92VgMd@cluster0.mongodb.net/abs_feed_erp?retryWrites=true&w=majority";
+const uri = "mongodb+srv://contacttajbiul_db_user:m0hwYPzOPopwi0ES@cluster0.d15jk4u.mongodb.net/?appName=Cluster0";
 const client = new MongoClient(uri);
 
 // Permissive CORS for development
