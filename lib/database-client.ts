@@ -73,7 +73,7 @@ export class DatabaseService {
 
   static async checkConnection(): Promise<boolean> {
     try {
-      const res = await fetch('/api/health', { cache: 'no-store' });
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/sales`, { cache: 'no-store' });
       return res.ok;
     } catch (e) {
       console.error("[DatabaseService] Health check failed:", e);
