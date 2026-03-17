@@ -4,7 +4,6 @@
  * Connecting to the Express.js Backend API.
  */
 
-const BACKEND_PORT = 5000;
 let detectedApiUrl: string | null = null;
 let isBackendAvailable = false;
 
@@ -18,10 +17,9 @@ export class DatabaseService {
     
     // Possible API roots to check
     const candidates = [
-      '/api', // Relative path (best for proxies)
-      `${protocol}//${hostname}:${BACKEND_PORT}/api`, // Absolute current host
-      `http://localhost:${BACKEND_PORT}/api`, // Hardcoded localhost
-      `http://127.0.0.1:${BACKEND_PORT}/api` // Loopback IP
+      'https://absfeed-erp.onrender.com', // Relative path (best for proxies)
+      `${protocol}//${hostname}:https://absfeed-erp.onrender.com/api`, // Absolute current host
+      `https://absfeed-erp.onrender.com/api` // Hardcoded localhost
     ];
 
     for (const url of candidates) {
@@ -29,7 +27,7 @@ export class DatabaseService {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 1500);
         
-        const response = await fetch(`${url}/health`, { 
+        const response = await fetch(`https://absfeed-erp.onrender.com/health`, { 
           method: 'GET', 
           signal: controller.signal,
           mode: 'cors'

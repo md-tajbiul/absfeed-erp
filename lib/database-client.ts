@@ -24,7 +24,7 @@ export class DatabaseService {
 
     try {
       console.log(`[DatabaseService] Requesting: ${method} /api${endpoint}`);
-      const response = await fetch(`/api${endpoint}`, config);
+      const response = await fetch(`https://absfeed-erp.onrender.com/api${endpoint}`, config);
       
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
@@ -73,7 +73,7 @@ export class DatabaseService {
 
   static async checkConnection(): Promise<boolean> {
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/sales`, { cache: 'no-store' });
+      const res = await fetch(`https://absfeed-erp.onrender.com/api/sales`, { cache: 'no-store' });
       return res.ok;
     } catch (e) {
       console.error("[DatabaseService] Health check failed:", e);

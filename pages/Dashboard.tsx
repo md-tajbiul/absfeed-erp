@@ -133,7 +133,7 @@ const Dashboard: React.FC<DashboardProps> = ({ products, sales, customers, offic
     // though navigating back to dashboard usually triggers re-render.
     const interval = setInterval(loadProductionData, 5000);
 
-    return () => {
+    return () => {await fetch
       window.removeEventListener('storage', loadProductionData);
       clearInterval(interval);
     };

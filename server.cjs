@@ -40,7 +40,7 @@ connectDB();
 // --- API ROUTES ---
 
 // Health Check
-app.get('/api/health', (req, res) => {
+app.get('https://absfeed-erp.onrender.com/api/health', (req, res) => {
   res.status(200).json({ 
     status: 'ok', 
     database: db ? 'connected' : 'disconnected',
@@ -49,7 +49,7 @@ app.get('/api/health', (req, res) => {
 });
 
 // Specific Sales Routes
-app.post('/api/sales', async (req, res) => {
+app.post('https://absfeed-erp.onrender.com/api/sales', async (req, res) => {
   try {
     const sale = req.body;
     const salesCol = db.collection('sales');
@@ -81,7 +81,7 @@ app.post('/api/sales', async (req, res) => {
   }
 });
 
-app.delete('/api/sales/:invoiceNo', async (req, res) => {
+app.delete('https://absfeed-erp.onrender.com/api/sales/:invoiceNo', async (req, res) => {
   try {
     const inv = req.params.invoiceNo;
     const salesCol = db.collection('sales');
@@ -113,7 +113,7 @@ app.delete('/api/sales/:invoiceNo', async (req, res) => {
 });
 
 // Bulk sync for master data
-app.post('/api/sync/:collection', async (req, res) => {
+app.post('https://absfeed-erp.onrender.com/api/sync/:collection', async (req, res) => {
   try {
     const collectionName = req.params.collection;
     const data = req.body;
@@ -130,7 +130,7 @@ app.post('/api/sync/:collection', async (req, res) => {
 });
 
 // Generic find all
-app.get('/api/:collection', async (req, res) => {
+app.get('https://absfeed-erp.onrender.com/api/:collection', async (req, res) => {
   try {
     const collectionName = req.params.collection;
     if (!db) return res.status(503).json({ error: "Database not connected" });
@@ -144,7 +144,7 @@ app.get('/api/:collection', async (req, res) => {
 });
 
 // Catch-all 404 for API
-app.use('/api', (req, res) => {
+app.use('https://absfeed-erp.onrender.com/api', (req, res) => {
   res.status(404).json({ error: "API Route not found", url: req.originalUrl });
 });
 
