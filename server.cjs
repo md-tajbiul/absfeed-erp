@@ -148,6 +148,14 @@ app.use('/api', (req, res) => {
   res.status(404).json({ error: "API Route not found", url: req.originalUrl });
 });
 
+app.get('/health', (req, res) => {
+  res.status(200).json({
+    status: 'ok',
+    database: db ? 'connected' : 'disconnected',
+    timestamp: new Date().toISOString()
+  });
+});
+
 app.listen(port, () => {
   console.log(`Server started. API accessible at http://localhost:${port}/api`);
 });
